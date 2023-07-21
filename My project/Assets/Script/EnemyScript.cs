@@ -8,41 +8,79 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] private Transform playerTransform;
     [SerializeField] private Rigidbody rigidbody;
     [SerializeField] private float timerMove;
-    
+
+
+    private float moveSpeed = 1.6f;
+    private bool move;
+    private int moveRight;
+    private int moveForward;
+
+    private int[] moveForwardSequence = new int [] { 1, 1, 0, 0 };
+    private int[] moveRightSequence = new int [] { 3, 3, 3, 3 };
+    private int i;
+
+    private void Start()
+    {
+        i = -1;
+        moveForward = 3;
+        moveRight = 3;
+    }
 
     void Update()
-    {    
+    {
+        Timer();
+    }
 
+    public void MovementPath()
+    {
+        moveForward = moveForwardSequence[i];
+        moveRight = moveRightSequence[i];
     }
 
     public void Timer()
     {
         if(timerMove > 0)
         {
-            timerMove = timerMove - Time.deltaTime();
+            timerMove = timerMove - Time.deltaTime;
+            move = false;
         }
+        else
+        {
+            if (i < moveForwardSequence.Length - 1)
+            {
+                i++;
+            }
+            else
+            {
+                i = 0;
+            }
+            move = true;
+            MovementPath();
+            EnemyMove();
+            timerMove = 2f;
+        }        
     }
 
     public void EnemyMove()
     {
         Vector2 inputVector = new Vector2(0, 0);
 
-        if ()
+        if (move && moveForward == 1)
         {
             inputVector.x = +moveSpeed;
             transform.LookAt(transform.position + new Vector3(0, 0, 1));
         }
-        if ()
+        if (move && moveRight == 1)
         {
             inputVector.y = -moveSpeed;
             transform.LookAt(transform.position + new Vector3(-1, 0, 0));
         }
-        if ()
+        if (move && moveForward == 0)
         {
             inputVector.x = -moveSpeed;
             transform.LookAt(transform.position + new Vector3(0, 0, -1));
         }
-        if ()
+        if (move && moveRight == 0)
         {
             inputVector.y = +moveSpeed;
             transform.LookAt(transform.position + new Vector3(1, 0, 0));

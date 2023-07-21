@@ -6,13 +6,14 @@ public class PlayerScript : MonoBehaviour
 {
     [SerializeField] private Transform playerTransform;
     [SerializeField] private Rigidbody rigidbody;
+    private float moveSpeed = 1.6f;
+
 
     private void Update()
     {
         PlayerMovement();
     }
 
-    private float moveSpeed = 1.6f;
 
     public void PlayerMovement()
     {
