@@ -4,11 +4,26 @@ using UnityEngine;
 
 public class DeathScript : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision collision)
+
+    private bool isGameOver;
+    private void Update()
     {
-        if(collision.gameObject.CompareTag("Player"))
+        GameOver();   
+    }
+
+    public void GameOver()
+    {
+        if(isGameOver)
         {
-            Debug.Log("Game Over");
+            Debug.Log("GameOver");
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            isGameOver = true;
         }
     }
 }

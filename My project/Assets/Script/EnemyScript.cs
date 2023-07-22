@@ -88,13 +88,13 @@ public class EnemyScript : MonoBehaviour
 
 
         Vector3 moveDirection = new Vector3(inputVector.y, 0f, inputVector.x);
-        bool canMove = !Physics.BoxCast(playerTransform.position, transform.localScale / 2, moveDirection, Quaternion.identity, moveSpeed, LayerMask.GetMask("Ground"));
+        bool canMove = !Physics.BoxCast(playerTransform.position, transform.localScale / 2, moveDirection, Quaternion.identity, moveSpeed, LayerMask.GetMask("Default"));
 
 
         if (!canMove)
         {
             Vector3 moveDirectionX = new Vector3(moveDirection.x, 0f, 0f);
-            canMove = moveDirection.x != 0 && !Physics.BoxCast(playerTransform.position, transform.localScale / 2, moveDirection, Quaternion.identity, moveSpeed, LayerMask.GetMask("Ground"));
+            canMove = moveDirection.x != 0 && !Physics.BoxCast(playerTransform.position, transform.localScale / 2, moveDirection, Quaternion.identity, moveSpeed, LayerMask.GetMask("Default"));
 
             if (canMove)
             {
@@ -103,7 +103,7 @@ public class EnemyScript : MonoBehaviour
             else
             {
                 Vector3 moveDirectionZ = new Vector3(0f, 0f, moveDirection.z);
-                canMove = moveDirection.z != 0 && !Physics.BoxCast(playerTransform.position, transform.localScale / 2, moveDirection, Quaternion.identity, moveSpeed, LayerMask.GetMask("Ground"));
+                canMove = moveDirection.z != 0 && !Physics.BoxCast(playerTransform.position, transform.localScale / 2, moveDirection, Quaternion.identity, moveSpeed, LayerMask.GetMask("Default"));
 
                 if (canMove)
                 {
