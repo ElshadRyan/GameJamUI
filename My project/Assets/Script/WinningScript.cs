@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WinningScript : MonoBehaviour
 {
@@ -24,7 +25,7 @@ public class WinningScript : MonoBehaviour
             {
                 gm.money += 70;
                 Debug.Log(gm.money);
-                Debug.Log("Winning");
+                SceneManager.LoadScene("YouWin");
             }
         }
     }

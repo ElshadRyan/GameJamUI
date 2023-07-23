@@ -15,8 +15,8 @@ public class EnemyScript : MonoBehaviour
     private int moveRight;
     private int moveForward;
 
-    private int[] moveForwardSequence = new int [] { 1, 1, 0, 0 };
-    private int[] moveRightSequence = new int [] { 3, 3, 3, 3 };
+    public int[] moveForwardSequence;
+    public int[] moveRightSequence;
     private int i;
 
     private void Start()
